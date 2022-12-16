@@ -19,9 +19,13 @@
 
 ### [1]源码运行(Linux/Arm64)
 - 必要环境:  **Python>=3.6** (Linux or Arm64)
+
 `git clone https://github.com/cyear/ice-study.git`
+
 `cd ice-study`
+
 `pip install -r requirements.txt`
+
 `python main.py` Run main
 
 ### [2]直接运行(Windows)
