@@ -18,16 +18,16 @@
 ## :books: 使用方法
 
 ### [1]源码运行(Linux/Arm64)
-1. 必要环境:  **Python>=3.6** (Linux or Arm64)
-2. `git clone https://github.com/cyear/ice-study.git`
-3. `cd ice-study`
-4. `pip install -r requirements.txt`
-5. `python main.py` Run main
+- 必要环境:  **Python>=3.6** (Linux or Arm64)
+`git clone https://github.com/cyear/ice-study.git`
+`cd ice-study`
+`pip install -r requirements.txt`
+`python main.py` Run main
 
 ### [2]直接运行(Windows)
-1. 运行环境: **Python>=3.6** (Windows>=7)
-2. Download exe
-3. Run exe
+- 运行环境: **Python>=3.6** (Windows>=7)
+- Download exe
+- Run exe
 
 实时维护反馈群聊：
 
