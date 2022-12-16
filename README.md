@@ -21,7 +21,7 @@
 
 - 必要环境:  **Python>=3.6** (Linux or Arm64)
 
-- 命令示例:
+命令示例:
 
     git clone https://github.com/cyear/ice-study.git
 
