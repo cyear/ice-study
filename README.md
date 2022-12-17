@@ -35,9 +35,9 @@
 - 运行环境: **Python>=3.6** (Windows>=7)
 - Download exe
 
-# 无法访问请耐心等待，正在逐步完善
+    无法访问请耐心等待，正在逐步完善
 
-# https://www.iceh2o1.top/github/ice-study
+    [免加速云盘](https://www.iceh2o1.top/github/ice-study)
 
 - Run exe
 
