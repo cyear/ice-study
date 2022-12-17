@@ -34,6 +34,11 @@
 ### [2]直接运行(Windows)
 - 运行环境: **Python>=3.6** (Windows>=7)
 - Download exe
+
+# 无法访问请耐心等待，正在逐步完善
+
+# https://www.iceh2o1.top/github/ice-study
+
 - Run exe
 
 实时维护反馈群聊：
