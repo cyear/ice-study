@@ -22,22 +22,23 @@ def f_list(k, v) -> str:
     return s
 def cookie_validity(header, cookie) -> bool:
    res = courses_get(header, cookie)
-   bool(res['result'])
+   return bool(res['result'])
 class User:
     def __init__(self):
         self.FILE = "config/users.json"
         self.FILE_COOKIE = "config/cookies.json"
-    def new(self, Login, headers) -> dict:
+    def new(self, ice) -> object:
         self.users = read(self.FILE)
         self.cookies = read(self.FILE_COOKIE)
+        self.ice = ice
+        self.iLog = ice.iLog
         self.stdin()
-        self.Login = Login
-        self.headers = headers
+        self.headers = self.ice.headers
         self.user_select()
-        self.new_cookie(self.Login)
-        return self.cookie
+        self.iLog(self.new_cookie(), 0)
+        return self
     def new_re(self):
-        self.new_cookie(self.Login)
+        self.iLog(self.new_cookie(), 0)
     def _write(self, text: dict) -> dict:
         return write(self.FILE, text)
     def stdin(self) -> dict:
@@ -57,7 +58,7 @@ class User:
             return {}
         def n3():
             self.user_select()
-            self.remove()
+            self.iLog(self.remove(), 0)
         l = [n1, n2, n3]
         if n > 3:
             quit(0)
@@ -79,16 +80,19 @@ class User:
             quit(1)
         self.user = k[n]
         self.passwd = self.users[self.user]
-    def new_cookie(self, Login) -> dict:
+    def new_cookie(self) -> dict:
+        self.proxy = self.ice.proxy
         if self.user in self.cookies.keys():
             res = courses_get(self.headers, self.cookies[self.user])
+            self.iLog(res, 0)
             self.courses = res
             self.cookie = self.cookies[self.user]
             # if cookie_validity(header, self.cookies[user]):
             if res['result']:
-                print("Cookie 有效")
-            return self.cookies[self.user]
-        self.cookie = Login(self.user, self.passwd)
+                self.iLog("Cookie...  [OK]")
+                return self.cookies[self.user]
+        self.iLog("Cookie... [Refresh]", 2)
+        self.cookie = self.ice.login(self.user, self.passwd)
         self.cookies[self.user] = dict(self.cookie)
-        write(self.FILE_COOKIE, self.cookies)
+        self.iLog(write(self.FILE_COOKIE, self.cookies), 0)
         return dict(self.cookie)
