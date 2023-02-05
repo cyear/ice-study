@@ -1,4 +1,4 @@
-# 超星学习通任务点/刷题/刷课/拒绝倒卖
+# 超星学习通(chaoxing)任务点/刷题/刷课/拒绝倒卖/免费
 
 # :computer: ice-study
 
@@ -8,13 +8,15 @@
 
 ## :speech_balloon: 更新通知
 
-2023 更新:
+**❗️ 请注意: 当前版本未经过 Windows 任何测试以及适配**
+
+202302 更新:
 
     # 进度:
 
-        1. 登录
+        1. 登录(cookie缓存，重登...)
 
-        2. 进行中
+        2. 进行中(log显示, 课程获取...)
 
         ...
 
@@ -28,6 +30,8 @@
 
 命令示例:
 
+    # ❗️桌面支持不全 或 字体符号不全 请关闭logo
+
     git clone https://github.com/cyear/ice-study.git
 
     cd ice-study
@@ -39,11 +43,8 @@
 ### [2]直接运行(Windows)
 
 - 运行环境: **Python>=3.6** (Windows>=7)
+
 - Download exe
-
-  无法访问请耐心等待，正在逐步完善
-
-  [免加速云盘](https://www.iceh2o1.top/github/ice-study)
 
 - Run exe
 

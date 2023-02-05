@@ -1,5 +1,5 @@
 '''
-Login encryption thanks to 'Samueli924/chaoxing'
+Login and enc encryption thanks to 'Samueli924/chaoxing'
     Project(https://github.com/Samueli924/chaoxing)
 '''
 from core.crates.Config import write, read
@@ -20,18 +20,24 @@ def f_list(k, v) -> str:
     s = f"|\t{k}| {v}\t|"
     print(s)
     return s
-def cookie_validity(cookie) -> bool:
-    ...
+def cookie_validity(header, cookie) -> bool:
+   res = courses_get(header, cookie)
+   bool(res['result'])
 class User:
     def __init__(self):
         self.FILE = "config/users.json"
         self.FILE_COOKIE = "config/cookies.json"
     def new(self, Login, headers) -> dict:
-        self.user = read(self.FILE)
+        self.users = read(self.FILE)
         self.cookies = read(self.FILE_COOKIE)
         self.stdin()
-        self.new_cookie(Login, headers)
+        self.Login = Login
+        self.headers = headers
+        self.user_select()
+        self.new_cookie(self.Login)
         return self.cookie
+    def new_re(self):
+        self.new_cookie(self.Login)
     def _write(self, text: dict) -> dict:
         return write(self.FILE, text)
     def stdin(self) -> dict:
@@ -39,7 +45,7 @@ class User:
             n = int(input("Please select:\n\t1. Add User\n\t2. Login\n\t3. Del User\n\tN. Exit\nInput: "))
         except:
             quit(0)
-        if n==1:
+        def n1():
             user, passwd = input("User: "), getpass.getpass("Passwd: ")
             '''
             Tips:
@@ -47,37 +53,42 @@ class User:
                     Ever used ssh? yeah! That's what he didself.
             '''
             return self.add(user, passwd)
-        elif n==2:
-            ...
-        elif n==3:
-            self.remove(input("User:"))
-        else:
+        def n2():
+            return {}
+        def n3():
+            self.user_select()
+            self.remove()
+        l = [n1, n2, n3]
+        if n > 3:
             quit(0)
-        return {}
+        return l[n-1]()
     def add(self, user, passwd) -> dict:
-        passwd = des("u2oh6Vu^", "u2oh6Vu^", pad=None,padmode=PAD_PKCS5).encrypt(passwd, padmode=PAD_PKCS5).hex()
-        self.user[user] = passwd
-        return self._write(self.user)
-    def remove(self, user) -> dict:
-        del(self.user[user])
-        return self.user
-    def new_cookie(self, Login, header) -> dict:
-        k = list(self.user.keys())
+        self.users[user] = des("u2oh6Vu^", "u2oh6Vu^", pad=None,padmode=PAD_PKCS5).encrypt(passwd, padmode=PAD_PKCS5).hex()
+        return self._write(self.users)
+    def remove(self) -> dict:
+        del(self.users[self.user])
+        write(self.FILE, self.users)
+        return self.users
+    def user_select(self):
+        k = list(self.users.keys())
         for i in range(len(k)):
             f_list(i, k[i])
-        n = int(input("Input: "))
-        user = k[n]
-        passwd = self.user[user]
-        # cookie = read(self.FILE_COOKIE)
-        if user in self.cookies.keys():
-            res = courses_get(header, self.cookies[user])
+        try:
+            n = int(input("Input: "))
+        except:
+            quit(1)
+        self.user = k[n]
+        self.passwd = self.users[self.user]
+    def new_cookie(self, Login) -> dict:
+        if self.user in self.cookies.keys():
+            res = courses_get(self.headers, self.cookies[self.user])
             self.courses = res
-            self.cookie = self.cookies[user]
+            self.cookie = self.cookies[self.user]
+            # if cookie_validity(header, self.cookies[user]):
             if res['result']:
                 print("Cookie 有效")
-            return self.cookies[user]
-        self.cookie = Login(user, passwd)
-        #! if cookie 
-        self.cookies[user] = dict(self.cookie)
+            return self.cookies[self.user]
+        self.cookie = Login(self.user, self.passwd)
+        self.cookies[self.user] = dict(self.cookie)
         write(self.FILE_COOKIE, self.cookies)
         return dict(self.cookie)
