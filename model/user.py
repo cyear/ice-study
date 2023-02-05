@@ -3,8 +3,11 @@ Login encryption thanks to 'Samueli924/chaoxing'
     Project(https://github.com/Samueli924/chaoxing)
 '''
 from core.crates.Config import write, read
-from binascii import b2a_hex
+from core.crates.Http import Http
+from core.api import Api
 from pyDes import des, PAD_PKCS5
+from .enc import enc
+from .courses import courses_get
 import getpass, random, secrets
 def header() -> dict:
     return {
@@ -13,15 +16,21 @@ def header() -> dict:
         }
 def user_hide(user: str) -> str:
     return user[0:3] + "****" + user[-4:]
-def f_list(k, v) -> None:
-    print(f"|\t{k}| {v}\t|")
+def f_list(k, v) -> str:
+    s = f"|\t{k}| {v}\t|"
+    print(s)
+    return s
+def cookie_validity(cookie) -> bool:
+    ...
 class User:
-    def __init__(self) -> None:
+    def __init__(self):
         self.FILE = "config/users.json"
-    def new(self, Login) -> dict:
+        self.FILE_COOKIE = "config/cookies.json"
+    def new(self, Login, headers) -> dict:
         self.user = read(self.FILE)
+        self.cookies = read(self.FILE_COOKIE)
         self.stdin()
-        self.new_cookie(Login)
+        self.new_cookie(Login, headers)
         return self.cookie
     def _write(self, text: dict) -> dict:
         return write(self.FILE, text)
@@ -46,18 +55,29 @@ class User:
             quit(0)
         return {}
     def add(self, user, passwd) -> dict:
-        passwd = b2a_hex(des("u2oh6Vu^", "u2oh6Vu^", pad=None,padmode=PAD_PKCS5).encrypt(passwd, padmode=PAD_PKCS5)).decode("utf-8")
+        passwd = des("u2oh6Vu^", "u2oh6Vu^", pad=None,padmode=PAD_PKCS5).encrypt(passwd, padmode=PAD_PKCS5).hex()
         self.user[user] = passwd
         return self._write(self.user)
     def remove(self, user) -> dict:
         del(self.user[user])
         return self.user
-    def new_cookie(self, Login):
+    def new_cookie(self, Login, header) -> dict:
         k = list(self.user.keys())
         for i in range(len(k)):
             f_list(i, k[i])
         n = int(input("Input: "))
         user = k[n]
         passwd = self.user[user]
+        # cookie = read(self.FILE_COOKIE)
+        if user in self.cookies.keys():
+            res = courses_get(header, self.cookies[user])
+            self.courses = res
+            self.cookie = self.cookies[user]
+            if res['result']:
+                print("Cookie 有效")
+            return self.cookies[user]
         self.cookie = Login(user, passwd)
-        return self.cookie
+        #! if cookie 
+        self.cookies[user] = dict(self.cookie)
+        write(self.FILE_COOKIE, self.cookies)
+        return dict(self.cookie)

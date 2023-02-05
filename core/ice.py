@@ -6,20 +6,14 @@ from model.user import header
 class ice_study:
     def __init__(self, v):
         Logo(v)
-
-    def login(self, user: str, password: str) -> dict:
+        self.headers = header()
+        print("welcome to ice-study 0.0.1(Beta LTS)")
+    def login(self, user: str, password: str):
         url = Api.Login_Host
-        data = {
-                "fid": "-1",
-                "uname": user,
-                "password": password,
-                # Password is encrypted
-                "t": "true",
-                "forbidotherlogin": "0",
-                "validate": "",
-                }
-        with Http.Client(headers=header(), params=data) as r:
+        data = Api.Login_Data(user, password)
+        with Http.Client(headers=self.headers, params=data) as r:
             res = r.post(url)
             print("Login res: ", res.json()["status"])
-            return res.cookies
+            self.cookies = res.cookies
+            return self.cookies
 
