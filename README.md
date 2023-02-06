@@ -6,7 +6,15 @@
 
 ## :speech_balloon: 更新通知
 
-**❗️ 请注意: 当前版本未经过 Windows 任何测试以及适配**
+\*\*💥 警告:
+
+    由于个人精神问题，
+
+    知识短浅等原因造成烂代码更新慢，
+
+    请见谅**
+
+**❗️ 注意: 非编译版本未经过 Windows 任何测试**
 
 ---
 
@@ -24,21 +32,19 @@
 
 ## :books: 使用方法
 
-### [1]源码运行(Linux/Arm64)
+### [1]源码运行(Amd64/Arm64)
 
-- 必要环境: **Python>=3.6** (Linux or Arm64)
+- 必要环境: **Python>=3.6** (Amd64 or Arm64)
 
-命令示例:
+  # ❗️ 桌面支持不全 或 字体符号不全 请关闭 logo
 
-    # ❗️桌面支持不全 或 字体符号不全 请关闭logo
+  git clone https://github.com/cyear/ice-study.git
 
-    git clone https://github.com/cyear/ice-study.git
+  cd ice-study
 
-    cd ice-study
+  pip3 install -r requirements.txt
 
-    pip3 install -r requirements.txt
-
-    python3 main.py
+  python3 main.py
 
 ---
 
