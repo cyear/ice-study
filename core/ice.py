@@ -30,8 +30,8 @@ class ice_study:
         self.iLog("welcome to " + self.VERSION)
         self.iLog(f"\nv: {v}\nheader: {self.headers}\nproxy: {self.proxy}\n", 0)
     def login(self, user: str, password: str):
-        url = Api.Login_Host
-        data = Api.Login_Data(user, password)
+        url = Api.Login
+        data = Api.Login_fn(user, password)
         self.iLog(f"\nurl[POST]: {url}\ndata: {data}\n", 0)
         with Http.Client(headers=self.headers, params=data, proxies=self.proxy) as r:
             res = r.post(url)

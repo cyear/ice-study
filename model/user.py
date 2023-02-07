@@ -7,7 +7,7 @@ from core.crates.Http import Http
 from core.api import Api
 from pyDes import des, PAD_PKCS5
 from .enc import enc
-from .courses import courses_get
+from .courses import Courses
 import getpass, random, secrets
 def header() -> dict:
     return {
@@ -27,6 +27,8 @@ class User:
     def __init__(self):
         self.FILE = "config/users.json"
         self.FILE_COOKIE = "config/cookies.json"
+        self.Courses = Courses()
+        self.f_list = f_list
     def new(self, ice) -> object:
         self.users = read(self.FILE)
         self.cookies = read(self.FILE_COOKIE)
@@ -70,10 +72,11 @@ class User:
         del(self.users[self.user])
         write(self.FILE, self.users)
         return self.users
-    def user_select(self):
-        k = list(self.users.keys())
+    def user_select(self, k=0):
+        if k==0:
+            k = list(self.users.keys())
         for i in range(len(k)):
-            f_list(i, k[i])
+            self.f_list(i, k[i])
         try:
             n = int(input("Input: "))
         except:
@@ -83,12 +86,11 @@ class User:
     def new_cookie(self) -> dict:
         self.proxy = self.ice.proxy
         if self.user in self.cookies.keys():
-            res = courses_get(self.headers, self.cookies[self.user])
-            self.iLog(res, 0)
-            self.courses = res
+            self.courses = self.Courses.courses_get(self.headers, self.cookies[self.user])
+            self.iLog(self.courses, 0)
             self.cookie = self.cookies[self.user]
             # if cookie_validity(header, self.cookies[user]):
-            if res['result']:
+            if self.courses['result']:
                 self.iLog("Cookie...  [OK]")
                 return self.cookies[self.user]
         self.iLog("Cookie... [Refresh]", 2)
