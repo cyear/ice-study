@@ -49,13 +49,9 @@
 - 必要环境: **? Python>=3.6** (Amd64 or Arm64)
   '''
   \#❗️ 桌面支持不全 或 字体符号不全 请关闭 logo
-
   git clone https://github.com/cyear/ice-study.git
-
   cd ice-study
-
   pip3 install -r requirements.txt
-
   python3 main.py
   '''
 
@@ -80,9 +76,9 @@
 # :warning: 免责声明
 
 - 本代码遵循 [GPL-3.0 License](https://github.com/cyear/ice-study/blob/main/LICENSE)协议
-- 本代码仅用于**学习讨论**，禁止**用于盈利等**
+- 本代码仅用于**学习测试**，禁止**用于盈利等**
 - 他人或组织使用本代码进行的任何**违法行为**与本人无关
 
 # 🔗Link project
-[Samueli924/chaoxing: 超星学习通/超星尔雅/泛雅超星全自动无人值守完成任务点 (github
+- [Samueli924/chaoxing: 超星学习通/超星尔雅/泛雅超星全自动无人值守完成任务点 (github
 .com)](https://github.com/Samueli924/chaoxing)
