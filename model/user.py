@@ -21,7 +21,7 @@ def f_list(k, v) -> str:
     print(s)
     return s
 def cookie_validity(header, cookie) -> bool:
-   res = courses_get(header, cookie)
+   res = Courses().courses_get(header, cookie)
    return bool(res['result'])
 class User:
     def __init__(self):
@@ -76,7 +76,7 @@ class User:
         if k==0:
             k = list(self.users.keys())
         for i in range(len(k)):
-            self.f_list(i, k[i])
+            self.f_list(i, user_hide(k[i]))
         try:
             n = int(input("Input: "))
         except:
