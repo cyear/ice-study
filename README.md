@@ -37,12 +37,10 @@
 - 必要环境: **? Python>=3.6** (Amd64 or Arm64)
 - 桌面支持不全 或 字体符号不全 请关闭 logo
 
-'''bash
-git clone https://github.com/cyear/ice-study.git
-cd ice-study
-pip3 install -r requirements.txt
-python3 main.py
-'''
+  git clone https://github.com/cyear/ice-study.git
+  cd ice-study
+  pip3 install -r requirements.txt
+  python3 main.py
 ---
 
 ### [2]直接运行(Windows)
