@@ -17,29 +17,17 @@
 **⚠️ 警告: 本项目仅供学习测试使用，请在24小时内删除所有数据**
 
 **❗️ 注意: 非编译版本未经过 Windows 任何测试**
-
 ---
-
 - 0.0.1-Beta LTS(202302) 更新:
-
   - 登录(cookie 缓存，重登...)
-
   - 功能(代理, 进度条, log...)
-
   - 进行中(课程获取...)
-
   - ...
-
 ---
-
 - 支持:
-
   - ✅手机+密码登录
-
   - ✅代理
-
   - ✅cookie缓存，重登
-
 ---
 
 ## :books: 使用方法
@@ -49,13 +37,12 @@
 - 必要环境: **? Python>=3.6** (Amd64 or Arm64)
 - 桌面支持不全 或 字体符号不全 请关闭 logo
 
-'''
+'''bash
 git clone https://github.com/cyear/ice-study.git
 cd ice-study
 pip3 install -r requirements.txt
 python3 main.py
-''z
-
+'''
 ---
 
 ### [2]直接运行(Windows)
