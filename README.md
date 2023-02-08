@@ -34,11 +34,11 @@
 
 - 支持:
 
-- ✅手机+密码登录
+  - ✅手机+密码登录
 
-- ✅代理
+  - ✅代理
 
-- ✅cookie缓存，重登
+  - ✅cookie缓存，重登
 
 ---
 
@@ -80,5 +80,4 @@
 - 他人或组织使用本代码进行的任何**违法行为**与本人无关
 
 # 🔗Link project
-- [Samueli924/chaoxing: 超星学习通/超星尔雅/泛雅超星全自动无人值守完成任务点 (github
-.com)](https://github.com/Samueli924/chaoxing)
+- [Samueli924/chaoxing: 超星学习通/超星尔雅/泛雅超星全自动无人值守完成任务点(Github)](https://github.com/Samueli924/chaoxing)
