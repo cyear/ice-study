@@ -38,8 +38,11 @@
 - 桌面支持不全 或 字体符号不全 请关闭 logo
 
   git clone https://github.com/cyear/ice-study.git
+
   cd ice-study
+
   pip3 install -r requirements.txt
+
   python3 main.py
 ---
 
