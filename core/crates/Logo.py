@@ -7,6 +7,7 @@ def Logo(v: bool) -> bool:
         return True
     
     # Linux
-    PATH = os.path.realpath(".") + "/core/crates/Linux/Logo_linux.sh"
-    os.system(f"bash {PATH}")
+    import core.crates.Linux.Logo_linux
+    #PATH = os.path.realpath(".") + "/core/crates/Linux/Logo_linux.sh"
+    #os.system(f"bash {PATH}")
     return True
