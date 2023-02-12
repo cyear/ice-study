@@ -24,10 +24,10 @@ class ice_study:
         res = Args()
         Logo(v and res['logo'])
         self.debug = int(res['debug'])
+        iLog_new(self,iLog)
         if res['v']:
-            ilog.log(self.VERSION)
+            self.iLog(self.VERSION)
             quit(0)
-        iLog_new(self, iLog)
         self.headers = Header()
         self.proxy = proxy
         self.iLog(res, 0)
