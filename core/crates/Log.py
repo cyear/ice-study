@@ -7,9 +7,6 @@ ERROR #错误提示
 WARN #潜在错误
 INFO #普通信息
 DEBUG #调试信息
-'''
-
-'''
 ------04.18------
 添加了LINE输出调用日志的行数
 添加了MODEL输出调用日志的函数
@@ -55,7 +52,7 @@ class iLog:
         self.log(e, 4)
         quit(255)
     #私有
-    def _w(self, text: str):
+    def w(self, text: str):
         def w(char):
             o = ord(char)
             if o == 0xe or o == 0xf:

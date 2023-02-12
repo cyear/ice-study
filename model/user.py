@@ -1,100 +1,88 @@
 '''
-Login and enc encryption thanks to 'Samueli924/chaoxing'
+Login and encryption thanks to 'Samueli924/chaoxing'
     Project(https://github.com/Samueli924/chaoxing)
 '''
-from core.crates.Config import write, read
+from core.crates.Config import Write, Read
 from core.crates.Http import Http
 from core.api import Api
 from pyDes import des, PAD_PKCS5
 from .enc import enc
 from .courses import Courses
 import getpass, random, secrets
-def header() -> dict:
+
+def Header() -> dict:
     return {
         'User-Agent': f'Dalvik/2.1.0 (Linux; U; Android {random.randint(9, 12)}; MI{random.randint(10, 12)} Build/SKQ1.210216.001) (device:MI{random.randint(10, 12)}) Language/zh_CN com.chaoxing.mobile/ChaoXingStudy_3_5.1.4_android_phone_614_74 (@Kalimdor)_{secrets.token_hex(16)}',
         'X-Requested-With': 'com.chaoxing.mobile'
         }
-def user_hide(user: str) -> str:
+def User_hide(user: str) -> str:
     return user[0:3] + "****" + user[-4:]
-def f_list(k, v) -> str:
-    s = f"|\t{k}| {v}\t|"
-    print(s)
-    return s
-def cookie_validity(header, cookie) -> bool:
+def Format_list(k, v):
+    print(f"| {k}\t| {v}\t|")
+def Cookie_validity(header, cookie) -> bool:
    res = Courses().courses_get(header, cookie)
    return bool(res['result'])
+
 class User:
-    def __init__(self):
+    def __init__(self, ice):
         self.FILE = "config/users.json"
         self.FILE_COOKIE = "config/cookies.json"
-        self.Courses = Courses()
-        self.f_list = f_list
-    def new(self, ice) -> object:
-        self.users = read(self.FILE)
-        self.cookies = read(self.FILE_COOKIE)
         self.ice = ice
         self.iLog = ice.iLog
+        self.Format_list = Format_list
+        self.Courses = Courses()
+    def new(self) -> object:
+        self.users = Read(self.FILE)
+        self.cookies = Read(self.FILE_COOKIE)
         self.stdin()
-        self.headers = self.ice.headers
         self.user_select()
-        self.iLog(self.new_cookie(), 0)
+        self.new_cookie()
         return self
     def new_re(self):
         self.iLog(self.new_cookie(), 0)
-    def _write(self, text: dict) -> dict:
-        return write(self.FILE, text)
     def stdin(self) -> dict:
         try:
             n = int(input("Please select:\n\t1. Add User\n\t2. Login\n\t3. Del User\n\tN. Exit\nInput: "))
-        except:
-            quit(0)
-        def n1():
-            user, passwd = input("User: "), getpass.getpass("Passwd: ")
-            '''
-            Tips:
-                1.About the password:
-                    Ever used ssh? yeah! That's what he didself.
-            '''
-            return self.add(user, passwd)
-        def n2():
-            return {}
-        def n3():
-            self.user_select()
-            self.iLog(self.remove(), 0)
-        l = [n1, n2, n3]
-        if n > 3:
-            quit(0)
-        return l[n-1]()
-    def add(self, user, passwd) -> dict:
-        self.users[user] = des("u2oh6Vu^", "u2oh6Vu^", pad=None,padmode=PAD_PKCS5).encrypt(passwd, padmode=PAD_PKCS5).hex()
-        return self._write(self.users)
-    def remove(self) -> dict:
-        del(self.users[self.user])
-        write(self.FILE, self.users)
-        return self.users
-    def user_select(self, k=0):
-        if k==0:
-            k = list(self.users.keys())
-        for i in range(len(k)):
-            self.f_list(i, user_hide(k[i]))
-        try:
-            n = int(input("Input: "))
+            def n1(): return self.add(input("User: "), getpass.getpass("Passwd: "))
+            def n2(): return {}
+            def n3(): self.iLog(self.remove(self.user_select()), 0)
+            return [0, n1, n2, n3][n]()
         except:
             quit(1)
-        self.user = k[n]
-        self.passwd = self.users[self.user]
-    def new_cookie(self) -> dict:
-        self.proxy = self.ice.proxy
-        if self.user in self.cookies.keys():
-            self.courses = self.Courses.courses_get(self.headers, self.cookies[self.user])
+    def add(self, user, passwd) -> dict:
+        self.users[user] = des("u2oh6Vu^", "u2oh6Vu^", pad=None,padmode=PAD_PKCS5).encrypt(passwd, padmode=PAD_PKCS5).hex()
+        return Write(self.FILE, self.users)
+    def remove(self, Null=None) -> dict:
+        del(self.users[self.user])
+        Write(self.FILE, self.users)
+        return self.users
+    def user_select(self, k=0):
+        if not k:
+            k = list(self.users.keys())
+        for i in range(len(k)):
+            self.Format_list(i, User_hide(k[i]))
+        try:
+            n = int(input("Input: "))
+            self.user = k[n]
+            self.passwd = self.users[self.user]
+        except: quit(1)
+    def new_cookie(self):
+        def cookie_validity(self):
+            self.courses = self.Courses.courses_get(self.ice.headers, self.cookies[self.user])
             self.iLog(self.courses, 0)
             self.cookie = self.cookies[self.user]
-            # if cookie_validity(header, self.cookies[user]):
             if self.courses['result']:
                 self.iLog("Cookie...  [OK]")
-                return self.cookies[self.user]
-        self.iLog("Cookie... [Refresh]", 2)
-        self.cookie = self.ice.login(self.user, self.passwd)
-        self.cookies[self.user] = dict(self.cookie)
-        self.iLog(write(self.FILE_COOKIE, self.cookies), 0)
-        return dict(self.cookie)
+                self.iLog(self.cookie, 0)
+            else:
+                self.iLog("Cookie... [Error]")
+                quit(1)
+        if self.user in self.cookies.keys():
+            cookie_validity(self)
+        else:
+            self.iLog("Cookie... [Refresh]", 2)
+            self.cookie = self.ice.login(self.user, self.passwd)
+            self.iLog(self.cookie, 0)
+            self.cookies[self.user] = dict(self.cookie)
+            self.iLog(Write(self.FILE_COOKIE, self.cookies), 0)
+            cookie_validity(self)
