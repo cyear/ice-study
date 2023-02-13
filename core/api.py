@@ -1,4 +1,5 @@
 import time
+# from model.courses import Courses
 from model.enc import enc
 class Api:
     SSL = "https://"
@@ -37,3 +38,16 @@ class Api:
         #?id=61101124&personid=250862560
         data = f"&id={classid}&personid={cpi}"
         return data
+
+    Course_Get_Info = HOST1 + "gas/knowledge"
+    # GET Course Info
+    def Course_Get_Info_fn(classid, courseid, i_enc=enc()):
+        return {
+                "id": classid,
+                "courseid": courseid,
+                "fields": "id,parentnodeid,indexorder,label,layer,name,begintime,createtime,lastmodifytime,status,jobUnfinishedCount,clickcount,openlock,card.fields(id,knowledgeid,title,knowledgeTitile,description,cardorder).contentcard(all)",
+                "view": "json",
+                "token": "4faa8662c59590c6f43ae9fe5b002b42",
+                "_time": i_enc[0],
+                "inf_enc": i_enc[1]
+                }
