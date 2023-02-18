@@ -3,7 +3,7 @@ def Logo(v: bool) -> bool:
     '''
     Logo printing
     '''
-    if not v:
+    if not v or os.name == 'nt':
         return True
     
     # Linux

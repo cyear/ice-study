@@ -1,6 +1,9 @@
 # 闲来无事制作的log显示
 # 兼容 Windiws
 import os, time, sys
+if os.name == 'nt':
+    import colorama
+    colorama.init()
 '''
 FATAL #重大错误
 ERROR #错误提示
@@ -18,6 +21,10 @@ FATAL日志下添加了\a警告
 优化不换行输出(\r)
 ------04.19------
 '''
+# @
+try: os.mkdir('config')
+except: ...
+# Windows
 class iLog:
     FATAL = 4
     ERROR = 3
@@ -45,7 +52,6 @@ class iLog:
         self._file(text, model)
         if level < self.level:
             return self.NO
-        os.system("")
         print(text, end = end)
         return self.YES
     def error(self, e):

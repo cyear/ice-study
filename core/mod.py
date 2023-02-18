@@ -4,10 +4,12 @@ class mod:
         self.mod={}
     def add(self):
         for fun in glob.glob('plug/*.py'):
-            if fun != 'plug/Plug.py':
-                fun = fun.split('/')[1][:-3]
+            # @
+            if fun != 'plug/Plug.py' and fun != 'plug\\Plug.py':
+                fun = fun[5:-3]
                 exec(f'import plug.{fun}')
                 self.mod[f'plug.{fun}']=eval(f'plug.{fun}')
+            # Windows
     def run(self, cls):
         for o,i in self.mod.items():
             i.main(cls)
