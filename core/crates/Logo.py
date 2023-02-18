@@ -4,6 +4,7 @@ def Logo(v: bool) -> bool:
     Logo printing
     '''
     if not v or os.name == 'nt':
+        import core.crates.Linux.Logo_win
         return True
     
     # Linux
