@@ -3,8 +3,6 @@
 - 超星学习通自动化完成任务点(跨端命令行)
 - 萌新零基础学习实验代码
 
-## :speech_balloon: 更新通知
-
 💥 警告:
 
     由于个人精神问题，
@@ -15,21 +13,25 @@
 
 **💥 警告: 本项目仅供学习测试使用，请在 24 小时内删除所有数据**
 
-## **⚠️ 注意: 非编译版本未经过 Windows 测试**
+# :warning: 免责声明
+
+- 本代码遵循 [GPL-3.0 License](https://github.com/cyear/ice-study/blob/main/LICENSE)协议
+- 本代码仅用于**学习测试**，禁止**用于盈利等**
+- 他人或组织使用本代码进行的任何**违法行为**与本人无关
+
+## :speech_balloon: 更新通知
 
 - 0.0.1-Beta LTS(202302) 更新:
-  - 登录(cookie 缓存，重登...)
-  - 功能(代理, 进度条, log...)
-  - 进行中(课程获取...)
+  - 登录
   - ...
 
 ---
 
-## 已实现功能
+### 已实现功能
 
 - ✅ 手机+密码登录
-- ✅cookie 缓存，重登
-
+- ✅ cookie 缓存，重登
+- ✅ 插件加载，执行
 ---
 
 ## :books: 使用方法
@@ -40,35 +42,21 @@
 
     git clone https://github.com/cyear/ice-study
 
-    cd ice-study
-
-    pip3 install -r requirements.txt
+    cd ice-study && pip install -r requirements.txt
 
     python3 main.py
 
 ---
 
-### [2]直接运行(Windows)
+### [2]直接运行(Windows>=7)
 
-- 运行环境: **Windows>=7**
-- Download exe
-- Run exe
+- x.x.x-Beta版本未经过适配
 
 ---
 
 实时维护反馈群聊：
 
     QQ: 556766602(请仔细阅读置顶群公告所有条目，网络非法外之地)
-
----
-
-# :warning: 免责声明
-
-- 本代码遵循 [GPL-3.0 License](https://github.com/cyear/ice-study/blob/main/LICENSE)协议
-- 本代码仅用于**学习测试**，禁止**用于盈利等**
-- 他人或组织使用本代码进行的任何**违法行为**与本人无关
-
----
 
 ## 🔗Link project
 
