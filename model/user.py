@@ -31,6 +31,7 @@ class User:
         self.iLog = ice.iLog
         self.Format_list = Format_list
         self.Courses = Courses()
+        self.new()
     def new(self) -> object:
         self.users = Read(self.FILE)
         self.cookies = Read(self.FILE_COOKIE)

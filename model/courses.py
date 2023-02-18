@@ -5,6 +5,7 @@ class Courses:
         if User:
             self.User = User
             self.iLog = User.iLog
+            self.new()
     def new(self) -> object:
         self.iLog("Courses_Get... [OK]")
         self.courses_format()

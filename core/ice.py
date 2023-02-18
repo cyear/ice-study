@@ -20,7 +20,7 @@ def nlog():
 
 class ice_study:
     VERSION = "ice-study 0.0.1(Beta LTS)"
-    def __init__(self, proxy=None, v=True):
+    def __init__(self, main=None, proxy=None, v=True):
         res = Args()
         Logo(v and res['logo'])
         self.debug = int(res['debug'])

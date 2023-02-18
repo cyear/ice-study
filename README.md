@@ -38,7 +38,7 @@
 
 必要环境: **? Python>=3.6**
 
-    git clone https://github.com/cyear/ice-study.git
+    git clone https://github.com/cyear/ice-study
 
     cd ice-study
 
