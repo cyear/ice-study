@@ -3,7 +3,9 @@ from .error import Error
 from .crates.Logo import Logo
 from .crates.Http import Http
 from .crates.Log import iLog
+from .crates.Version import Version
 from .args import Args
+from .update import Update
 from model.user import Header
 
 def iLog_new(ice, iLog):
@@ -19,18 +21,14 @@ def nlog():
     ...
 
 class ice_study:
-    VERSION = """
-      ___ _   _  ___  __ _ _ __
-     / __| | | |/ _ \/ _` | '__|
-    | (__| |_| |  __/ (_| | |
-     \___|\__, |\___|\__,_|_|
-          |___/\tice-study 0.0.1(Beta LTS)
-    """
+    VERSION = Version.version
     def __init__(self, main=None, proxy=None, v=True):
         res = Args()
         Logo(v and res['logo'])
-        self.debug = int(res['debug'])
+        self.debug = res['debug']
+        self.beta = res['beta']
         iLog_new(self,iLog)
+        Update(self.iLog, res['update'])
         if res['v']:
             self.iLog(self.VERSION)
             quit(0)

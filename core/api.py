@@ -3,9 +3,13 @@ import time
 from model.enc import enc
 class Api:
     SSL = "https://"
+    HTTP = "http://"
+    HOST = HTTP + "www.iceh2o1.top/"
     HOST0 = SSL + "passport2.chaoxing.com/"
     HOST1 = SSL + "mooc1-api.chaoxing.com/"
     HOST2 = SSL + "passport2-api.chaoxing.com/"
+
+    Update = HOST + "update"
 
     Login = HOST0 + "fanyalogin"
     # POST 账密登录

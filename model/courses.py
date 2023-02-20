@@ -1,5 +1,6 @@
 from core.api import Api
 from core.crates.Http import Http
+
 class Courses:
     def __init__(self, User=None):
         if User:
