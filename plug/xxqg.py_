@@ -1,7 +1,6 @@
 import requests, re
 #import qrcode
 import qrcode_terminal
-
 """
 pip:
     requests

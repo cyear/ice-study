@@ -4,7 +4,7 @@ from model.enc import enc
 class Api:
     SSL = "https://"
     HTTP = "http://"
-    HOST = HTTP + "www.iceh2o1.top/"
+    HOST = HTTP + "120.46.165.86/" #"www.iceh2o1.top/" #服务器以及域名皆完成备案
     HOST0 = SSL + "passport2.chaoxing.com/"
     HOST1 = SSL + "mooc1-api.chaoxing.com/"
     HOST2 = SSL + "passport2-api.chaoxing.com/"

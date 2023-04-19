@@ -2,7 +2,7 @@ from core.mod import mod
 import os
 
 NT = 'nt'
-# 如想Windows强制运行，请把nt删掉(推荐'')或更改为任意字符
+# 如想Windows强制运行，请把nt删掉(推荐' ')或更改为任意字符
 
 def Plug(self):
     if os.name == NT:

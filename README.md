@@ -38,7 +38,6 @@
 
 ### 自带插件
 
-- xxqg(☁️ Server)
 - Hello_world(测试模块)
 - ...
 
@@ -56,11 +55,9 @@
 
 ---
 
-### [2]未适配(Windows>=7)
+## :books: 题库使用方法(lib.rs注意修改)
 
-- x.x.x-Beta版本未经过适配
-
----
+    cargo run --release
 
 实时维护反馈群聊：
 

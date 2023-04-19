@@ -1,8 +1,23 @@
 [package]
-name = "ice-study"
+name = "ice_cx_qk"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+# web
+actix-web = "4.3.1"
+chrono = "0.4.24"
+env_logger = "0.10.0"
+log = "0.4.17"
+rusqlite = "0.29.0"
+
+# web + json
+serde = { version = "1.0.159", features = ["derive"] }
+serde_json = "1.0.59"
+
+# http
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1", features = ["full"] }

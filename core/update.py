@@ -20,4 +20,4 @@ def Update(Log, U):
                 Log('请使用git pull手动更新！')
             else:
                 Log('无需更新！')
-        # quit(0)
+        quit(0)

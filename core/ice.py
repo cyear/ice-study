@@ -28,7 +28,7 @@ class ice_study:
         self.debug = res['debug']
         self.beta = res['beta']
         iLog_new(self,iLog)
-        Update(self.iLog, True) #res['update'])
+        Update(self.iLog, res['update'])
         if res['v']:
             self.iLog(self.VERSION)
             quit(0)

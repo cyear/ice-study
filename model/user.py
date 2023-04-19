@@ -78,7 +78,7 @@ class User:
             else:
                 self.iLog("Cookie... [Error]")
                 quit(1)
-        if self.user in self.cookies.keys():
+        if self.user in self.cookies.keys() and Cookie_validity(self.ice.headers, self.cookies[self.user]) :
             cookie_validity(self)
         else:
             self.iLog("Cookie... [Refresh]", 2)
