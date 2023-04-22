@@ -25,8 +25,8 @@
 
 - 0.0.1-Beta LTS(202302) 更新:
   - 登录
-- 0.0.1(202303)
-
+- 0.0.1-R(202304) 更新:
+  - 题库
 ---
 
 ### 已实现功能
@@ -63,6 +63,7 @@
 
     QQ: 556766602(请仔细阅读置顶群公告所有条目，网络非法外之地)
 
+##
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=cyear&theme=react-dark&color=#ffffff)](https://github-readme-activity-graph.cyclic.app/graph?username=cyear&theme=react-dark&color=#ffffff)
 
 ## 🔗Link project
