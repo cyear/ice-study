@@ -63,7 +63,7 @@
 
     QQ: 556766602(请仔细阅读置顶群公告所有条目，网络非法外之地)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cyear&layout=compact)](https://github.com/cyear)
+[![Ashutosh's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=cyear&theme=react-dark&color=#ffffff)](https://github-readme-activity-graph.cyclic.app/graph?username=cyear&theme=react-dark&color=#ffffff)
 
 ## 🔗Link project
 
