@@ -63,6 +63,8 @@
 
     QQ: 556766602(请仔细阅读置顶群公告所有条目，网络非法外之地)
 
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cyear&layout=compact)](https://github.com/cyear)
+
 ## 🔗Link project
 
 - [Samueli924/chaoxing: 超星学习通/超星尔雅/泛雅超星全自动无人值守完成任务点(Github)](https://github.com/Samueli924/chaoxing)
